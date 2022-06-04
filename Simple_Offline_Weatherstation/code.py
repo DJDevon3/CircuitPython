@@ -55,30 +55,54 @@ hello_label.color = text_white
 
 temp_label = label.Label(terminalio.FONT)
 temp_label.anchor_point = (1.0, 0.0)
-temp_label.anchored_position = (350, 50)
-temp_label.scale = (10)
+temp_label.anchored_position = (450, 70)
+temp_label.scale = (5)
 temp_label.color = text_orange
+
+temp_data_label = label.Label(terminalio.FONT)
+temp_data_label.anchor_point = (1.0, 0.0)
+temp_data_label.anchored_position = (360, 50)
+temp_data_label.scale = (12)
+temp_data_label.color = text_orange
 
 humidity_label = label.Label(terminalio.FONT)
 humidity_label.anchor_point = (1.0, 0.0)
-humidity_label.anchored_position = (320, 200)
+humidity_label.anchored_position = (100, 290)
 humidity_label.scale = (2)
 humidity_label.color = text_white
 
+humidity_data_label = label.Label(terminalio.FONT)
+humidity_data_label.anchor_point = (1.0, 0.0)
+humidity_data_label.anchored_position = (115, 245)
+humidity_data_label.scale = (3)
+humidity_data_label.color = text_white
+
 barometric_label = label.Label(terminalio.FONT)
 barometric_label.anchor_point = (1.0, 0.0)
-barometric_label.anchored_position = (320, 230)
+barometric_label.anchored_position = (277, 290)
 barometric_label.scale = (2)
 barometric_label.color = text_white
 
+barometric_data_label = label.Label(terminalio.FONT)
+barometric_data_label.anchor_point = (1.0, 0.0)
+barometric_data_label.anchored_position = (285, 246)
+barometric_data_label.scale = (3)
+barometric_data_label.color = text_white
+
 altitude_label = label.Label(terminalio.FONT)
 altitude_label.anchor_point = (1.0, 0.0)
-altitude_label.anchored_position = (320, 260)
+altitude_label.anchored_position = (470, 292)
 altitude_label.scale = (2)
 altitude_label.color = text_white
 
+altitude_data_label = label.Label(terminalio.FONT)
+altitude_data_label.anchor_point = (1.0, 0.0)
+altitude_data_label.anchored_position = (470, 247)
+altitude_data_label.scale = (3)
+altitude_data_label.color = text_white
+
 # Load Bitmap to tile grid first (background layer)
-bitmap = displayio.OnDiskBitmap("/images/purbokeh_8.bmp")
+bitmap = displayio.OnDiskBitmap("/images/Astral_Fruit_8bit.bmp")
 tile_grid = displayio.TileGrid(bitmap, pixel_shader=bitmap.pixel_shader)
 text_group = displayio.Group()
 text_group.append(tile_grid)
@@ -86,18 +110,26 @@ text_group.append(tile_grid)
 # Label Display Group (foreground layer)
 text_group.append(hello_label)
 text_group.append(temp_label)
+text_group.append(temp_data_label)
 text_group.append(humidity_label)
+text_group.append(humidity_data_label)
 text_group.append(barometric_label)
+text_group.append(barometric_data_label)
 text_group.append(altitude_label)
+text_group.append(altitude_data_label)
 display.show(text_group)
 
 while True:
     # Label.text in the loop for sensor data updates
     hello_label.text = "Simple Offline Weatherstation"
-    temp_label.text = "{:.1f}".format(bmp280.temperature*1.8+32)
-    humidity_label.text = "Humidity: {:.1f} %".format(sht31d.relative_humidity)
-    altitude_label.text = "Altitude: {:.1f} f".format(bmp280.altitude*3.28)
-    barometric_label.text = f"Pressure: {bmp280.pressure:.1f}"
+    temp_label.text = "F"
+    temp_data_label.text = "{:.1f}".format(bmp280.temperature*1.8+32)
+    humidity_label.text = "Humidity"
+    humidity_data_label.text = "{:.1f} %".format(sht31d.relative_humidity)
+    altitude_label.text = "Altitude"
+    altitude_data_label.text = "{:.1f} f".format(bmp280.altitude*3.28)
+    barometric_label.text = "Pressure"
+    barometric_data_label.text = f"{bmp280.pressure:.1f}"
 
     # Serial printout for debugging
     # print("Temperature: {:.1f} F".format(bmp280.temperature*1.8+32))
