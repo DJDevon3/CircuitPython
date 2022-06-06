@@ -39,11 +39,11 @@ storage.mount(vfs, virtual_root)
 # System Stats
 u_name = os.uname()
 print("\n")
-print("System Name:")
+print("System:")
 print("===========================")
-print("System Name: ", u_name[0])
+print("Board: ", u_name[4])
+print("Type: ", u_name[0])
 print("Version: ", u_name[3])
-print("Machine: ", u_name[4])
 
 # Small pause (in seconds) on Stats before File Directory is shown
 time.sleep(10.0)
@@ -51,7 +51,7 @@ time.sleep(10.0)
 # Volume Information Stats
 SD_Card_Size = os.statvfs(virtual_root)
 print("\n")
-print("SD Card Stats:")
+print("SD Card Status:")
 print("===========================")
 print("Block Size: ", SD_Card_Size[0])
 print("Fragment Size: ", SD_Card_Size[1])
