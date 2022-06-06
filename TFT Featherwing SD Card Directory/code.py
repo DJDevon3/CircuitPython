@@ -44,11 +44,15 @@ def print_directory(path, tabs=0):
         if isdir:
             print_directory(path + "/" + file, tabs + 1)
 
-
-print("Files on filesystem:")
-print("====================")
+print("\n")
+print("SD Card Files:")
+print("===========================")
 print_directory("/sd")
 
 # Quick help to remove stuff. Directories must be empty before deleted.
 # os.remove("/sd/backgrounds/image.bmp")
 # os.rmdir("/sd/backgrounds")
+
+# You can run libraries and .py files from the SD card by appending the system path.
+# import something_on_the_sd_card
+# sys.path.append("/sd")
