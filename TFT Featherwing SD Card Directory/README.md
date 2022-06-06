@@ -4,4 +4,6 @@
 
 This is a very simple demo that lists all directories & files from your Featherwing SD Card to your Featherwing TFT display.
 
+WPSettings.dat & IndexerVolumeGuid are files automatically created by Windows storage service if you use the SD Card with a card reader on Windows OS. They're  normal expected files for Windows users and are safe to delete from your SD card.
+
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/TFT%20Featherwing%20SD%20Card%20Directory/TFT_Output_Example.jpg)
