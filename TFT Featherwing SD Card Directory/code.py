@@ -1,9 +1,11 @@
 import board
 import digitalio
+import displayio
 import adafruit_sdcard
 import storage
 import os
 import time
+from adafruit_hx8357 import HX8357
 
 spi = board.SPI()
 # Use board.SD_CS for Feather M0 Adalogger
@@ -14,12 +16,37 @@ cs = digitalio.DigitalInOut(board.D5)
 # Initialize SDCard to SPI bus
 sdcard = adafruit_sdcard.SDCard(spi, cs)
 vfs = storage.VfsFat(sdcard)
+displayio.release_displays()
+
+# This sketch should also work for the 2.5" TFT, just change the size.
+DISPLAY_WIDTH = 480
+DISPLAY_HEIGHT = 320
+
+# Release any resources currently in use for the displays
+displayio.release_displays()
+spi = board.SPI()
+tft_cs = board.D9
+tft_dc = board.D10
+display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
+display = HX8357(display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT)
 
 # Mounts virtual folder "sd" to your CIRCUITPY board.
 # Ensure the folder DOES NOT EXIST or it will throw an error.
 # vfs is a Virtual File System. An invisible temporary folder, it's not a USB drive.
 virtual_root = "/sd"
 storage.mount(vfs, virtual_root)
+
+# System Stats
+u_name = os.uname()
+print("\n")
+print("System Name:")
+print("===========================")
+print("System Name: ", u_name[0])
+print("Version: ", u_name[3])
+print("Machine: ", u_name[4])
+
+# Small pause (in seconds) on Stats before File Directory is shown
+time.sleep(10.0)
 
 # Volume Information Stats
 SD_Card_Size = os.statvfs(virtual_root)
@@ -39,11 +66,9 @@ if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) >= 1.0:
     print("Free Space GB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024)
 if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) <= 1.0:
     print("Free Space MB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024)
-print(SD_Card_Size[0] * SD_Card_Size[3])
-
     
 # Small pause (in seconds) on Stats before File Directory is shown
-time.sleep(3.0)
+time.sleep(10.0)
     
 def print_directory(path, tabs=0):
     for file in os.listdir(path):
