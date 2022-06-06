@@ -11,17 +11,18 @@ spi = board.SPI()
 # Or use a digitalio pin like 5 for breakout wiring:
 cs = digitalio.DigitalInOut(board.D5)
 
-# Initialize SDCard class to SPI bus
+# Initialize SDCard to SPI bus
 sdcard = adafruit_sdcard.SDCard(spi, cs)
 vfs = storage.VfsFat(sdcard)
 
 # Mounts virtual folder "sd" to your CIRCUITPY board.
 # Ensure the folder DOES NOT EXIST or it will throw an error.
 # vfs is a Virtual File System. An invisible temporary folder, it's not a USB drive.
-storage.mount(vfs, "/sd")
+virtual_root = "/sd"
+storage.mount(vfs, virtual_root)
 
 # Volume Information Stats
-SD_Card_Size = os.statvfs("/sd")
+SD_Card_Size = os.statvfs(virtual_root)
 print("\n")
 print("SD Card Stats:")
 print("===========================")
@@ -41,7 +42,7 @@ print("Mount Flags: ", SD_Card_Size[8])
 print("Max Filename Length: ", SD_Card_Size[9])
 if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) >= 1.0:
     print("Disk Size GB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024)
-if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024) <= 1.0:
+if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) <= 1.0:
     print("Disk Size MB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024)
     
 # Small pause (in seconds) on Stats before File Directory is shown
@@ -75,7 +76,7 @@ def print_directory(path, tabs=0):
 print("\n")
 print("SD Card Files:")
 print("===========================")
-print_directory("/sd")
+print_directory(virtual_root)
 
 # Quick help to remove stuff. Directories must be empty before deleted.
 # os.remove("/sd/backgrounds/image.bmp")
