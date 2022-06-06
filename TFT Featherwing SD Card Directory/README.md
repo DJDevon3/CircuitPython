@@ -1,6 +1,7 @@
 # Required Hardware:
 - Adafruit Feather (NRF52840 in this example) running Circuit Python 7.3.x
-- Adafruit TFT (2.5" or 3.5") Featherwing with with Fat32 formatted SD Card
+- Adafruit TFT (2.5" or 3.5") Featherwing
+- SD Card (FAT32, FAT16, ExFat)
 
 This is a very simple demo that lists all directories & files from your Featherwing SD Card to your Featherwing TFT display.
 
