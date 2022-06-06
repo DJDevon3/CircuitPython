@@ -3,7 +3,9 @@
 - Adafruit TFT (2.5" or 3.5") Featherwing
 - SD Card (FAT32, FAT16, ExFat)
 
-This is a very simple demo that lists all directories & files from your Featherwing SD Card to your Featherwing TFT display.
+This is a simple way to start interacting with the SD card on your featherwing. 
+
+It lists volume information then all directories & files from your Featherwing SD Card to your Featherwing TFT display.
 
 System Volume Information directory, WPSettings.dat, & IndexerVolumeGuid are files automatically created by Windows storage service if you use the SD Card with a card reader on Windows OS. They're  normal expected files for Windows users and are safe to delete from your SD card.
 
