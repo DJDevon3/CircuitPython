@@ -3,6 +3,7 @@ import digitalio
 import adafruit_sdcard
 import storage
 import os
+import time
 
 spi = board.SPI()
 # Use board.SD_CS for Feather M0 Adalogger
@@ -42,6 +43,9 @@ if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) >= 1.0:
     print("Disk Size GB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024)
 if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024) <= 1.0:
     print("Disk Size MB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024)
+    
+# Small pause (in seconds) on Stats before File Directory is shown
+time.sleep(3.0)
     
 def print_directory(path, tabs=0):
     for file in os.listdir(path):
