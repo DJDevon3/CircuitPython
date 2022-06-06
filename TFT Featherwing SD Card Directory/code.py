@@ -19,6 +19,30 @@ vfs = storage.VfsFat(sdcard)
 # vfs is a Virtual File System. An invisible temporary folder, it's not a USB drive.
 storage.mount(vfs, "/sd")
 
+# Volume Information Stats
+SD_Card_Size = os.statvfs("/sd")
+print("\n")
+print("SD Card Stats:")
+print("===========================")
+if (SD_Card_Size[0] / 1024) == 32.0:
+    print("Format: FAT32")
+elif (SD_Card_Size[0] / 1024) == 16.0:
+    print("Format: FAT16")
+elif (SD_Card_Size[0] / 1024) != 16.0 or 32.0:
+    print("Block Size: ", SD_Card_Size[0])
+print("Fragment Size: ", SD_Card_Size[1])
+print("Free Blocks: ", SD_Card_Size[3])
+print("Free Blocks Unpriv: ", SD_Card_Size[4])
+print("Inodes: ", SD_Card_Size[5])
+print("Free Inodes: ", SD_Card_Size[6])
+print("Free Inodes Unpriv: ", SD_Card_Size[7])
+print("Mount Flags: ", SD_Card_Size[8])
+print("Max Filename Length: ", SD_Card_Size[9])
+if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024) >= 1.0:
+    print("Disk Size GB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024 / 1024)
+if (SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024) <= 1.0:
+    print("Disk Size MB: ", SD_Card_Size[0] * SD_Card_Size[3] / 1024 / 1024)
+    
 def print_directory(path, tabs=0):
     for file in os.listdir(path):
         stats = os.stat(path + "/" + file)
