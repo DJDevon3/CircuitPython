@@ -7,9 +7,9 @@ import time
 import board
 import adafruit_bmp280
 import adafruit_sht31d
-import terminalio
 import displayio
 from adafruit_display_text import label
+from adafruit_bitmap_font import bitmap_font
 from adafruit_hx8357 import HX8357
 
 i2c = board.I2C()
@@ -46,65 +46,70 @@ text_red = (0xFF0000)
 text_white = (0xFFFFFF)
 text_yellow = (0xFFFF00)
 
+# Fonts are optional
+small_font = bitmap_font.load_font("/fonts/Arial-12.bdf")
+medium_font = bitmap_font.load_font("/fonts/Arial-16.bdf")
+large_font = bitmap_font.load_font("/fonts/Arial-Bold-24.bdf")
+
 # Individual customizable position labels
 # https://learn.adafruit.com/circuitpython-display-support-using-displayio/text
-hello_label = label.Label(terminalio.FONT)
+hello_label = label.Label(small_font)
 # Anchor point bottom center of text
 hello_label.anchor_point = (0.5, 1.0)
 # Display width divided in half for center of display (x,y)
-hello_label.anchored_position = (DISPLAY_WIDTH/2, 20)
-hello_label.scale = (2)
+hello_label.anchored_position = (DISPLAY_WIDTH/2, 15)
+hello_label.scale = (1)
 hello_label.color = text_white
 
-temp_label = label.Label(terminalio.FONT)
+temp_label = label.Label(medium_font)
 temp_label.anchor_point = (1.0, 0.0)
-temp_label.anchored_position = (475, 70)
-temp_label.scale = (5)
+temp_label.anchored_position = (475, 80)
+temp_label.scale = (2)
 temp_label.color = text_orange
 
-temp_data_label = label.Label(terminalio.FONT)
+temp_data_label = label.Label(large_font)
 temp_data_label.anchor_point = (0.5, 1.0)
-temp_data_label.anchored_position = (DISPLAY_WIDTH/2, 210)
-temp_data_label.scale = (12)
+temp_data_label.anchored_position = (DISPLAY_WIDTH/2, 200)
+temp_data_label.scale = (5)
 temp_data_label.color = text_orange
 
-humidity_label = label.Label(terminalio.FONT)
+humidity_label = label.Label(small_font)
 # Anchor point bottom left of text
 humidity_label.anchor_point = (0.0, 1.0)
 humidity_label.anchored_position = (5, DISPLAY_HEIGHT)
-humidity_label.scale = (2)
+humidity_label.scale = (1)
 humidity_label.color = text_white
 
-humidity_data_label = label.Label(terminalio.FONT)
+humidity_data_label = label.Label(medium_font)
 humidity_data_label.anchor_point = (0.0, 1.0)
-humidity_data_label.anchored_position = (5, DISPLAY_HEIGHT-30)
-humidity_data_label.scale = (3)
+humidity_data_label.anchored_position = (5, DISPLAY_HEIGHT-25)
+humidity_data_label.scale = (1)
 humidity_data_label.color = text_white
 
-barometric_label = label.Label(terminalio.FONT)
+barometric_label = label.Label(small_font)
 # Anchor point bottom center of text
 barometric_label.anchor_point = (0.5, 1.0)
 barometric_label.anchored_position = (DISPLAY_WIDTH/2, DISPLAY_HEIGHT)
-barometric_label.scale = (2)
+barometric_label.scale = (1)
 barometric_label.color = text_white
 
-barometric_data_label = label.Label(terminalio.FONT)
+barometric_data_label = label.Label(medium_font)
 barometric_data_label.anchor_point = (0.5, 1.0)
-barometric_data_label.anchored_position = (DISPLAY_WIDTH/2, DISPLAY_HEIGHT-30)
-barometric_data_label.scale = (3)
+barometric_data_label.anchored_position = (DISPLAY_WIDTH/2, DISPLAY_HEIGHT-25)
+barometric_data_label.scale = (1)
 barometric_data_label.color = text_white
 
-altitude_label = label.Label(terminalio.FONT)
+altitude_label = label.Label(small_font)
 # Anchor point bottom right of text
 altitude_label.anchor_point = (1.0, 1.0)
 altitude_label.anchored_position = (470, DISPLAY_HEIGHT)
-altitude_label.scale = (2)
+altitude_label.scale = (1)
 altitude_label.color = text_white
 
-altitude_data_label = label.Label(terminalio.FONT)
+altitude_data_label = label.Label(medium_font)
 altitude_data_label.anchor_point = (1.0, 1.0)
-altitude_data_label.anchored_position = (470, DISPLAY_HEIGHT-30)
-altitude_data_label.scale = (3)
+altitude_data_label.anchored_position = (470, DISPLAY_HEIGHT-25)
+altitude_data_label.scale = (1)
 altitude_data_label.color = text_white
 
 # Load Bitmap to tile grid first (background layer)
@@ -128,7 +133,7 @@ display.show(text_group)
 while True:
     # Label.text in the loop for sensor data updates
     hello_label.text = "Simple Offline Weatherstation"
-    temp_label.text = "F"
+    temp_label.text = "°F"
     temp_data_label.text = "{:.1f}".format(bmp280.temperature*1.8+32)
     humidity_label.text = "Humidity"
     humidity_data_label.text = "{:.1f} %".format(sht31d.relative_humidity)
@@ -145,3 +150,4 @@ while True:
 
     time.sleep(60.0)
     pass
+
