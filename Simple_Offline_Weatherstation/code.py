@@ -11,8 +11,7 @@ import displayio
 from adafruit_display_text import label
 from adafruit_bitmap_font import bitmap_font
 from adafruit_hx8357 import HX8357
-
-i2c = board.I2C()
+from analogio import AnalogIn
 
 # This sketch should also work for the 2.5" TFT, just change the size.
 DISPLAY_WIDTH = 480
@@ -20,18 +19,24 @@ DISPLAY_HEIGHT = 320
 
 # Initialize TFT Display
 displayio.release_displays()
+i2c = board.I2C()
 spi = board.SPI()
 tft_cs = board.D9
 tft_dc = board.D10
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = HX8357(display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT)
 
+vbat_voltage = AnalogIn(board.VOLTAGE_MONITOR)
+def get_voltage(pin):
+    return (pin.value * 3.3) / 65536 * 2
+vbat = get_voltage(vbat_voltage)
+
 bmp280 = adafruit_bmp280.Adafruit_BMP280_I2C(i2c)
 sht31d = adafruit_sht31d.SHT31D(i2c)
 
-# Altitude sensor changes with pressure.
+# BMP280 altitude sensor changes with barometric pressure!
 # I set sea level pressure to sensor pressure because I'm always at sea level.
-# Use the line below instead if that doesn't work well for your elevation.
+# Set manually if it doesn't work well for your elevation.
 # bmp280.sea_level_pressure = 1010.80
 bmp280.sea_level_pressure = bmp280.pressure
 
@@ -112,6 +117,11 @@ altitude_data_label.anchored_position = (470, DISPLAY_HEIGHT-25)
 altitude_data_label.scale = (1)
 altitude_data_label.color = text_white
 
+vbat_label = label.Label(small_font)
+vbat_label.anchor_point = (1.0, 1.0)
+vbat_label.anchored_position = (DISPLAY_WIDTH, 15)
+vbat_label.scale = (1)
+
 # Load Bitmap to tile grid first (background layer)
 bitmap = displayio.OnDiskBitmap("/images/Astral_Fruit_8bit.bmp")
 tile_grid = displayio.TileGrid(bitmap, pixel_shader=bitmap.pixel_shader)
@@ -120,6 +130,7 @@ text_group.append(tile_grid)
 
 # Label Display Group (foreground layer)
 text_group.append(hello_label)
+text_group.append(vbat_label)
 text_group.append(temp_label)
 text_group.append(temp_data_label)
 text_group.append(humidity_label)
@@ -129,10 +140,24 @@ text_group.append(barometric_data_label)
 text_group.append(altitude_label)
 text_group.append(altitude_data_label)
 display.show(text_group)
-
+vbat_label.text = "{:.2f}".format(vbat)
 while True:
     # Label.text in the loop for sensor data updates
     hello_label.text = "Simple Offline Weatherstation"
+    
+    # Changes battery voltage color depending on charge level
+    if vbat_label.text >= "4.00":
+        vbat_label.color = text_green
+    elif vbat_label.text >= "3.80" and vbat_label.text <= "3.99":
+        vbat_label.color = text_yellow
+    elif vbat_label.text >= "3.75" and vbat_label.text <= "3.79":
+        vbat_label.color = text_orange
+    elif vbat_label.text <= "3.74":
+        vbat_label.color = text_red
+    else:
+        vbat_label.color = text_white
+        
+    vbat_label.text
     temp_label.text = "°F"
     temp_data_label.text = "{:.1f}".format(bmp280.temperature*1.8+32)
     humidity_label.text = "Humidity"
@@ -147,7 +172,7 @@ while True:
     # print("Humidity: {:.1f} %".format(sht31d.relative_humidity))
     # print("Barometric pressure:", bmp280.pressure)
     # print("Altitude: {:.1f} m".format(bmp280.altitude))
+    print("VBat voltage: {:.2f}".format(vbat))
 
-    time.sleep(60.0)
+    time.sleep(5.0)
     pass
-
