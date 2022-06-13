@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Simple_Offline_Weatherstation/TFT_Output_Example3.jpg)
 
-A project that began on Arduino and eventually updated to Circuit Python 7.x
+A project that began on Arduino and eventually updated to Circuit Python 7.x. There is no online or BLE used in this project. All sensor data comes from the board. Default sleep timer is 60 seconds (configurable). With a 3x 18650 adafruit battery pack this will stay alive on battery power for about 30 hours (tested). Recommend this is a permanent install on USB power and only using the battery backup for power outage.
 
 # Hardware Required:
 - Adafruit NRF52840 Bluefruit Sense Board (running Circuit Python)
