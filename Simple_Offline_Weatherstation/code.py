@@ -235,7 +235,7 @@ while True:
     # print("Humidity: {:.1f} %".format(sht31d.relative_humidity))
     # print("Barometric pressure:", bmp280.pressure)
     # print("Altitude: {:.1f} m".format(bmp280.altitude))
-    print("VBat voltage: {:.2f}".format(vbat))
+    # print("VBat voltage: {:.2f}".format(vbat))
 
-    time.sleep(5.0)
+    time.sleep(60.0)
     pass
