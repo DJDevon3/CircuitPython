@@ -1,4 +1,5 @@
-These are just to list the circuit python libraries needed in this sketch.
+Circuit Python 7.3 libraries needed in this sketch.
+
 If you already have these libraries in your /lib folder on your Circuit Python device there's no need to grab these.
 
 In fact, I recommend you get the latest up-to-date versions of these library files from the Circuit Python website.
