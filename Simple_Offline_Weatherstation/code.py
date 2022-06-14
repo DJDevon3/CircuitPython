@@ -148,8 +148,14 @@ redbmp_label.anchor_point = (1.0, 1.0)
 redbmp_label.scale = (1)
 
 # Load Bitmap to tile grid first (background layer)
-bitmap = displayio.OnDiskBitmap("/images/Astral_Fruit_8bit.bmp")
-tile_grid = displayio.TileGrid(bitmap, pixel_shader=bitmap.pixel_shader)
+bitmap = displayio.OnDiskBitmap("/images/Wallpaper_Spritesheet_8bit.bmp")
+tile_grid = displayio.TileGrid(
+    bitmap,
+    pixel_shader=bitmap.pixel_shader,
+    width=1,
+    height=1,
+    tile_width=DISPLAY_WIDTH,
+    tile_height=DISPLAY_HEIGHT)
 
 # Load battery voltage icons (from 1 sprite sheet image)
 sprite_sheet, palette = adafruit_imageload.load("/icons/vbat_spritesheet.bmp",
@@ -194,10 +200,11 @@ text_group.append(redbmp_label)
 display.show(main_group)
 
 vbat_label.text = "{:.2f}".format(vbat)
+source_index = 0
 while True:
     # Label.text in the loop for sensor data updates
     hello_label.text = "Simple Offline Weatherstation"
-    
+
     # Changes battery voltage color depending on charge level
     if vbat_label.text >= "4.23":
         vbat_label.color = text_white
@@ -220,6 +227,9 @@ while True:
     else:
         vbat_label.color = text_white
         
+    tile_grid[0] = source_index % 4
+    source_index += 1
+
     vbat_label.text
     temp_label.text = "°F"
     temp_data_label.text = "{:.1f}".format(bmp280.temperature*1.8+32)
@@ -236,6 +246,7 @@ while True:
     # print("Barometric pressure:", bmp280.pressure)
     # print("Altitude: {:.1f} m".format(bmp280.altitude))
     # print("VBat voltage: {:.2f}".format(vbat))
+    # print("Background Index Count: {:.2f}".format(source_index))
 
     time.sleep(60.0)
     pass
