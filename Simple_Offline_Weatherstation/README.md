@@ -1,6 +1,7 @@
-![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Simple_Offline_Weatherstation/TFT_Output_Example3.jpg)
+https://user-images.githubusercontent.com/49322231/173497468-bfe35097-0e19-45f0-9818-d2d6f1cdf303.mp4
 
 # Project Description:
+
 A project that began on Arduino and eventually updated to Circuit Python 7.x. There is no online or BLE used in this project. All sensor data comes from the board. Default sleep timer is 60 seconds (configurable). Will stay alive on battery power for about 30 hours (tested with Adafruit 3x 18650 battery pack). Recommended as a permanent install with USB power and backup battery for a power outage.
 
 # Hardware Required:
