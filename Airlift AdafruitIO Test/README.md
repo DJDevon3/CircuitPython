@@ -30,6 +30,6 @@ Count: 1
 ```
 # Warning about SPI bus lock ups
 The SPI bus can get locked sometimes when interacting with multiple feather boards through SPI.
-If your SPI bus is locked it will throw an error: `ValueError: SCK in use` no matter what software pin you attempt to choose.
+If your SPI bus is locked it will throw the error `ValueError: SCK in use` no matter what software pin you attempt to choose.
 When the SPI bus gets locked it can persist through code changes and soft-reboots!
-A simple board reset (physical button reset) after a code change involving SPI bus can solve that. 
+A simple board reset (physical button reset) after a code change involving SPI bus can solve that. Reset the board and run your code again. 
