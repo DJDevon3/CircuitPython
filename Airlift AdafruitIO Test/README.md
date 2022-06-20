@@ -33,3 +33,7 @@ The SPI bus can get locked sometimes when interacting with multiple feather boar
 If your SPI bus is locked it will throw the error `ValueError: SCK in use` no matter what software pin you attempt to choose.
 When the SPI bus gets locked it can persist through code changes and soft-reboots!
 A simple board reset (physical button reset) after a code change involving SPI bus can solve that. Reset the board and run your code again. 
+
+# Default Sleep Timer
+For the purpose of testing it's set to 10 seconds. `time.sleep(10)` Set to 3600 for hourly updates when you finalize your code.
+AdafruitIO free accounts have a 1000 update daily limit which you can easily exceed by posting every 10 seconds.
