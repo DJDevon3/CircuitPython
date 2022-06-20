@@ -36,4 +36,4 @@ A simple board reset (physical button reset) after a code change involving SPI b
 
 # Default Sleep Timer
 For the purpose of testing it's set to 10 seconds. `time.sleep(10)` Set to 3600 for hourly updates when you finalize your code.
-AdafruitIO free accounts have a 1000 update daily limit which you can easily exceed by posting every 10 seconds. The most you can post 1 value within a 24 hour period without going over the 1000 limit is once every 1.5 minutes.
+AdafruitIO free accounts have a 1000 update daily limit which you can easily exceed by posting every 10 seconds. The most you can post 1 value within a 24 hour period without going over the 1000 limit is once every 1.5 minutes (90 seconds).
