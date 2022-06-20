@@ -1,5 +1,5 @@
 # Project Description:
-Quick demo for those who have a triple stack with TFT featherwing and Airlift featherwing.
+Quick demo for those who have a triple stack with TFT featherwing and Airlift featherwing (multiple SPI bus devices).
 
 # Hardware:
 - Adafruit NRF52840 Bluefruit Sense Board https://www.adafruit.com/product/4516
@@ -30,6 +30,6 @@ Count: 1
 ```
 # Warning about SPI bus lock ups
 The SPI bus can get locked sometimes when interacting with multiple feather boards through SPI.
-If your SPI bus is locked it will throw an error: `SCK in use` no matter what software pin you attempt to choose.
+If your SPI bus is locked it will throw an error: `ValueError: SCK in use` no matter what software pin you attempt to choose.
 When the SPI bus gets locked it can persist through code changes and soft-reboots!
 A simple board reset (physical button reset) after a code change involving SPI bus can solve that. 
