@@ -19,8 +19,7 @@ Only put the library folders you actively need in CIRCUITPY/lib
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed key named "sense-temp" and post an integer temperature value in Fareinheit. 
-A quick demo for how to connect to AdafruitIO and post some data.
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. 
 ```
 ===============================
 Connecting to WiFi...
