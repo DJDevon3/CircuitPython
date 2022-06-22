@@ -45,6 +45,7 @@ display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = HX8357(display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT)
 
 # Connect to WiFi
+print("\n===============================")
 print("Connecting to WiFi...")
 wifi.connect()
 print("Connected!\n")
@@ -57,25 +58,43 @@ update_val = "{:.1f}".format(bmp280.temperature*1.8+32)
 # For example, create a feed "temp_test" at AdafruitIO it sets the key "temp-test".
 feed_key = "sense-temp"
     
+print("Connecting to AdafruitIO...")
 while True:
     try:
+        print("Connected!")
+        print("===============================\n")
         print("Value: %.1f" % float(update_val))
-        print("Posting Value...", end="")
-        payload = {"value": (update_val)}
-        response = wifi.post(
+        print("Posting Value...")
+        publish = {"value": (update_val)}
+        post = wifi.post(
             "https://io.adafruit.com/api/v2/"
             + secrets["aio_username"]
             + "/feeds/"
             + feed_key
             + "/data",
-            json=payload,
+            json=publish,
             headers={"X-AIO-KEY": secrets["aio_key"]},
         )
-        print(response.json())
-        response.close()
+        print(post.json())
+        post.close()
+        
+        print("\nConfirmation Response...")
+        get = wifi.get(
+            "https://io.adafruit.com/api/v2/"
+            + secrets["aio_username"]
+            + "/feeds/"
+            + feed_key
+            + "/data?limit=1",
+            json=None,
+            headers={"X-AIO-KEY": secrets["aio_key"]},
+        )
+        print(get.json())
+        get.close()
+        print("\n===============================")
     except (ValueError, RuntimeError) as e:
         print("Failed to get data, retrying\n", e)
         wifi.reset()
+        time.sleep(60)
         continue
     response = None
-    time.sleep(3600)
+    time.sleep(15)
