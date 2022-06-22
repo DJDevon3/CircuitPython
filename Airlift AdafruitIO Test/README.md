@@ -19,8 +19,8 @@ Only put the library folders you actively need in CIRCUITPY/lib
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed named "test" and post an integer value starting at 0 then counting up with each sequential post. 
-It's a quick demo for how to connect to AdafruitIO and post some data.
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and post an integer temperature value in Fareinheit. 
+A quick demo for how to connect to AdafruitIO and post some data.
 ```
 ===============================
 Connecting to WiFi...
