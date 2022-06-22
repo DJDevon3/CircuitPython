@@ -31,8 +31,14 @@ Connecting to AdafruitIO...
 Connected!
 ===============================
 
-Value: 89.6
-Posting Value...{'created_at': '2022-06-22T06:39:13Z', 'id': 'obfuscated', 'expiration': '2022-07-22T06:39:13Z', 'created_epoch': 1655879953, 'feed_id': obfuscated, 'value': '89.6', 'feed_key': 'sense-temp'}
+Value: 89.0
+Posting Value...
+{'created_at': '2022-06-22T08:01:37Z', 'id': 'obfuscated', 'expiration': '2022-07-22T08:01:37Z', 'created_epoch': 1655884897, 'feed_id': obfuscated, 'value': '89.0', 'feed_key': 'sense-temp'}
+
+Confirmation Response...
+[{'created_at': '2022-06-22T08:01:37Z', 'id': 'obfuscated', 'expiration': '2022-07-22T08:01:37Z', 'created_epoch': 1655884897, 'feed_id': obfuscated, 'value': '89.0', 'feed_key': 'sense-temp'}]
+
+===============================
 ```
 # Warning about SPI bus lock ups
 The SPI bus can get locked sometimes when interacting with multiple feather boards through SPI.
