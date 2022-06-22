@@ -19,7 +19,7 @@ Only put the library folders you actively need in CIRCUITPY/lib
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed but cannot change the name of the feed key once created. 
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed but cannot change the name of the feed key once created. The feed key is not your AdafruitIO key, feed keys are created per feed.
 ```
 ===============================
 Connecting to WiFi...
