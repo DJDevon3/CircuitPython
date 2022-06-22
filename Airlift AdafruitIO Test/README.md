@@ -1,7 +1,7 @@
 # Project Description:
 Quick demo for those who have a Bluefruit Sense triple stack with TFT featherwing and Airlift featherwing (multiple SPI bus devices). 
 
-The adafruit_esp32spi helper library was specifically written for the airlift or esp32 breakout modules only. It will not work on a feather main board that has a built-in esp32 (use adafruit_minimqtt instead).
+The adafruit_esp32spi helper library was specifically written for the airlift and esp32-S2/S3 breakout modules only. It will not work on a feather main board that has a built-in esp32-S2/S3 (use adafruit_minimqtt instead).
 
 # Hardware:
 - Adafruit NRF52840 Bluefruit Sense Board https://www.adafruit.com/product/4516
