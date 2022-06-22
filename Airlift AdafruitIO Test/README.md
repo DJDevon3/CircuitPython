@@ -22,11 +22,11 @@ Only put the library folders you actively need in CIRCUITPY/lib
 This demo code will connect to your AdafruitIO feed named "test" and post an integer value starting at 0 then counting up with each sequential post. 
 It's a quick demo for how to connect to AdafruitIO and post some data.
 ```
-Posting data...{'created_at': '2022-06-20T04:48:18Z', 'id': 'obfuscated', 'expiration': '2022-07-20T04:48:18Z', 'created_epoch': 1655700498, 'feed_id': obfuscated, 'value': '50', 'feed_key': 'test'}
-Count: 0
+Connecting to WiFi...
+Connected!
 
-Posting data...{'created_at': '2022-06-20T04:48:18Z', 'id': 'obfuscated', 'expiration': '2022-07-20T04:48:18Z', 'created_epoch': 1655700498, 'feed_id': obfuscated, 'value': '50', 'feed_key': 'test'}
-Count: 1
+Value: 89.6
+Posting Value...{'created_at': '2022-06-22T06:32:15Z', 'id': 'obfuscated', 'expiration': '2022-07-22T06:32:15Z', 'created_epoch': 1655879535, 'feed_id': obfuscated, 'value': '89.6', 'feed_key': 'sense-temp'}
 ```
 # Warning about SPI bus lock ups
 The SPI bus can get locked sometimes when interacting with multiple feather boards through SPI.
