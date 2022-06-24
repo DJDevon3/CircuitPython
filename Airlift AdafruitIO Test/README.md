@@ -31,12 +31,14 @@ Connecting to AdafruitIO...
 Connected!
 ===============================
 
-Value: 89.0
 Posting Value...
-{'created_at': '2022-06-22T08:01:37Z', 'id': 'obfuscated', 'expiration': '2022-07-22T08:01:37Z', 'created_epoch': 1655884897, 'feed_id': obfuscated, 'value': '89.0', 'feed_key': 'sense-temp'}
+{'created_at': '2022-06-24T13:32:47Z', 'id': 'obfuscated', 'expiration': '2022-07-24T13:32:47Z', 'created_epoch': 1656077567, 'feed_id': obfuscated, 'value': '90.7', 'feed_key': 'sense-temp'}
 
 Confirmation Response...
-[{'created_at': '2022-06-22T08:01:37Z', 'id': 'obfuscated', 'expiration': '2022-07-22T08:01:37Z', 'created_epoch': 1655884897, 'feed_id': obfuscated, 'value': '89.0', 'feed_key': 'sense-temp'}]
+Number of Items in Dictionary:  7
+{'expiration': '2022-07-24T13:32:47Z', 'id': 'obfuscated', 'feed_key': 'sense-temp', 'created_epoch': 1656077567, 'feed_id': obfuscated, 'value': '90.7', 'created_at': '2022-06-24T13:32:47Z'}
+Circuit Python Object Type : <class 'dict'>
+Return Single Value! : 90.7
 
 ===============================
 ```
