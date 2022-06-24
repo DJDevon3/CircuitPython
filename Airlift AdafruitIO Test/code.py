@@ -6,6 +6,7 @@ from digitalio import DigitalInOut
 import adafruit_bmp280
 import adafruit_sht31d
 import neopixel
+import json
 from adafruit_esp32spi import adafruit_esp32spi
 from adafruit_esp32spi import adafruit_esp32spi_wifimanager
 from adafruit_hx8357 import HX8357
@@ -50,22 +51,18 @@ print("Connecting to WiFi...")
 wifi.connect()
 print("Connected!\n")
 
-# Value to be posted to AdafruitIO (NRF52840 on-board temp sensor)
-update_val = "{:.1f}".format(bmp280.temperature*1.8+32)
-
 # Your feed key might be different from the feed name (no underscore allowed).
 # It's not your IO account key or feed name. It's the individual key for each feed.
 # For example, create a feed "temp_test" at AdafruitIO it sets the key "temp-test".
 feed_key = "sense-temp"
-    
+
 print("Connecting to AdafruitIO...")
 while True:
     try:
         print("Connected!")
         print("===============================\n")
-        print("Value: %.1f" % float(update_val))
         print("Posting Value...")
-        publish = {"value": (update_val)}
+        publish = {"value": "{:.1f}".format(bmp280.temperature*1.8+32)}
         post = wifi.post(
             "https://io.adafruit.com/api/v2/"
             + secrets["aio_username"]
@@ -77,8 +74,9 @@ while True:
         )
         print(post.json())
         post.close()
-        
+
         print("\nConfirmation Response...")
+        time.sleep(10)
         get = wifi.get(
             "https://io.adafruit.com/api/v2/"
             + secrets["aio_username"]
@@ -88,7 +86,14 @@ while True:
             json=None,
             headers={"X-AIO-KEY": secrets["aio_key"]},
         )
-        print(get.json())
+        array_val = get.json()
+        json_str = json.dumps(array_val)
+        resp = json.loads(json_str)
+        dictionary = resp[0]
+        print("Number of Items in Dictionary: ", len(dictionary))
+        print(dictionary)
+        print("Circuit Python Object Type :", type(dictionary))
+        print("Return Single Value! :", dictionary['value'])  # Single Value Return Yay!
         get.close()
         print("\n===============================")
     except (ValueError, RuntimeError) as e:
