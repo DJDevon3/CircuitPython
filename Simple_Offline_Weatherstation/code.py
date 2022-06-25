@@ -55,7 +55,7 @@ text_yellow = (0xFFFF00)
 # Fonts are optional
 small_font = bitmap_font.load_font("/fonts/Arial-12.bdf")
 medium_font = bitmap_font.load_font("/fonts/Arial-16.bdf")
-large_font = bitmap_font.load_font("/fonts/Arial-Bold-24.bdf")
+huge_font = bitmap_font.load_font("/fonts/GoodTimesRg-Regular-121.bdf")
 
 # Individual customizable position labels
 # https://learn.adafruit.com/circuitpython-display-support-using-displayio/text
@@ -69,14 +69,14 @@ hello_label.color = text_white
 
 temp_label = label.Label(medium_font)
 temp_label.anchor_point = (1.0, 0.0)
-temp_label.anchored_position = (475, 80)
+temp_label.anchored_position = (475, 115)
 temp_label.scale = (2)
 temp_label.color = text_orange
 
-temp_data_label = label.Label(large_font)
+temp_data_label = label.Label(huge_font)
 temp_data_label.anchor_point = (0.5, 1.0)
 temp_data_label.anchored_position = (DISPLAY_WIDTH/2, 200)
-temp_data_label.scale = (5)
+temp_data_label.scale = (1)
 temp_data_label.color = text_orange
 
 humidity_label = label.Label(small_font)
