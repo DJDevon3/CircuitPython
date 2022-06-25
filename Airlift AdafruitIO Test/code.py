@@ -12,7 +12,7 @@ from adafruit_esp32spi import adafruit_esp32spi_wifimanager
 from adafruit_hx8357 import HX8357
 displayio.release_displays()
 
-# This sketch should also work for the 2.5" TFT, just change the size.
+# Should also work for the 2.5" TFT Featherwing, just change the size.
 DISPLAY_WIDTH = 480
 DISPLAY_HEIGHT = 320
 
@@ -51,17 +51,25 @@ print("Connecting to WiFi...")
 wifi.connect()
 print("Connected!\n")
 
-# Your feed key might be different from the feed name (no underscore allowed).
-# It's not your IO account key or feed name. It's the individual key for each feed.
-# For example, create a feed "temp_test" at AdafruitIO it sets the key "temp-test".
+# Each of your feeds will have an individual feed key
 feed_key = "sense-temp"
+sleep_time = 8000  # Timeout between Get/Post updates
 
+if (sleep_time) < 60:
+    sleep_time_conversion = "seconds"
+elif (sleep_time) >= 60 and (sleep_time) < 3600:
+    sleep_int = sleep_time / 60
+    sleep_time_conversion = "minutes"
+elif (sleep_time) >= 3600:
+    sleep_int = sleep_time / 60 / 60
+    sleep_time_conversion = "hours"
+    
 print("Connecting to AdafruitIO...")
 while True:
     try:
         print("Connected!")
         print("===============================\n")
-        print("Posting Value...")
+        print("POST Value...")
         publish = {"value": "{:.1f}".format(bmp280.temperature*1.8+32)}
         post = wifi.post(
             "https://io.adafruit.com/api/v2/"
@@ -75,8 +83,8 @@ while True:
         print(post.json())
         post.close()
 
-        print("\nConfirmation Response...")
-        time.sleep(10)
+        print("\nGET Response...")
+        # time.sleep(10)
         get = wifi.get(
             "https://io.adafruit.com/api/v2/"
             + secrets["aio_username"]
@@ -95,6 +103,7 @@ while True:
         print("Circuit Python Object Type :", type(dictionary))
         print("Return Single Value! :", dictionary['value'])  # Single Value Return Yay!
         get.close()
+        print("\nNext Update in %s %s" % (int(sleep_int), sleep_time_conversion))
         print("\n===============================")
     except (ValueError, RuntimeError) as e:
         print("Failed to get data, retrying\n", e)
@@ -102,4 +111,4 @@ while True:
         time.sleep(60)
         continue
     response = None
-    time.sleep(15)
+    time.sleep(sleep_time)
