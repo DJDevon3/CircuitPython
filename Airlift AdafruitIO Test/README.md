@@ -52,11 +52,11 @@ Next Update in 2 hours
 
 ===============================
 ```
-# Warning about SPI bus lock ups
-The SPI bus can get locked sometimes when interacting with multiple feather boards through SPI.
+# Warning about SPI bus lock ups on initial pin configuration
+The SPI bus can get locked sometimes while attempting to figure out your initial featherwing SPI pin configurations. 
 If your SPI bus is locked it will throw the error `ValueError: SCK in use` no matter what software pin you attempt to choose.
 When the SPI bus gets locked it can persist through code changes and soft-reboots!
-A simple board reset (physical button reset) after a code change involving SPI bus can solve that. Reset the board and run your code again. 
+A simple board reset (physical button reset) after a code change involving SPI bus can solve that. Reset the board and run your code again. Since figuring out the correct pinouts to use with my setup I've never had a single lock up. When it works like it should you'll have no problems from there on out.
 
 # Default Sleep Timer
 For the purpose of testing it's set to 10 seconds. `time.sleep(10)` Set to 3600 for hourly updates when you finalize your code.
