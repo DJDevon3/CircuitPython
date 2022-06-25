@@ -1,4 +1,4 @@
-https://user-images.githubusercontent.com/49322231/173497468-bfe35097-0e19-45f0-9818-d2d6f1cdf303.mp4
+![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Simple_Offline_Weatherstation/TFT_Output_Example4.jpg)
 
 # Project Description:
 
