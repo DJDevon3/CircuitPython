@@ -18,10 +18,15 @@ Only put the library folders you actively need in CIRCUITPY/lib
 # AdafruitIO:
 - AdafruitIO account username & key (edit secrets.py file)
 
+# AdafruitIO Feed Key Example
+The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed. You cannot change the name of a feed key once created. When you create a new feed in AdafruitIO a feed key is automatically generated based on the feed name. You can only get the feed key after you've created a new feed.
+
+![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Airlift%20AdafruitIO%20Test/AdafruitIO_Feed_Key_Example.PNG)
+
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed. You cannot change the name of a feed key once created. When you create a new feed in AdafruitIO a feed key is automatically generated based on the feed name. You can only get the feed key after you've created a new feed.
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. 
 ```
 Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
 code.py output:
