@@ -26,7 +26,7 @@ The feed key isn't necessarily the same as your feed name. You can change the na
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. 
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and POST a float temperature value in Fareinheit from the on-board BMP280 sensor. It will then GET and return the same value. This should complete the basics you need to start interacting with your AdafruitIO feeds and dashboard. Finally it will tell you how long until the next update (configurable with sleep timer).
 ```
 Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
 code.py output:
