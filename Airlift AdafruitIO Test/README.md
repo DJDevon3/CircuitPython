@@ -21,8 +21,11 @@ Only put the library folders you actively need in CIRCUITPY/lib
 
 # Serial and TFT Output Example:
 
-This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed but cannot change the name of the feed key once created. The feed key is not your AdafruitIO key, feed keys are created per feed.
+This demo code will connect to your AdafruitIO feed key named "sense-temp" and post a float temperature value in Fareinheit from the on-board BMP280 sensor. The feed key isn't necessarily the same as your feed name. You can change the name of an AdafruitIO feed. You cannot change the name of a feed key once created. The feed key is not your AdafruitIO key, feed keys are created per feed.
 ```
+Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
+code.py output:
+
 ===============================
 Connecting to WiFi...
 Connected!
@@ -31,14 +34,16 @@ Connecting to AdafruitIO...
 Connected!
 ===============================
 
-Posting Value...
-{'created_at': '2022-06-24T13:32:47Z', 'id': 'obfuscated', 'expiration': '2022-07-24T13:32:47Z', 'created_epoch': 1656077567, 'feed_id': obfuscated, 'value': '90.7', 'feed_key': 'sense-temp'}
+POST Value...
+{'created_at': '2022-06-25T10:32:54Z', 'id': 'obfuscated', 'expiration': '2022-07-25T10:32:54Z', 'created_epoch': 1656153174, 'feed_id': obfuscated, 'value': '87.0', 'feed_key': 'sense-temp'}
 
-Confirmation Response...
+GET Response...
 Number of Items in Dictionary:  7
-{'expiration': '2022-07-24T13:32:47Z', 'id': 'obfuscated', 'feed_key': 'sense-temp', 'created_epoch': 1656077567, 'feed_id': obfuscated, 'value': '90.7', 'created_at': '2022-06-24T13:32:47Z'}
+{'expiration': '2022-07-25T10:32:54Z', 'id': 'obfuscated', 'feed_key': 'sense-temp', 'created_epoch': 1656153174, 'feed_id': obfuscated, 'value': '87.0', 'created_at': '2022-06-25T10:32:54Z'}
 Circuit Python Object Type : <class 'dict'>
-Return Single Value! : 90.7
+Return Single Value! : 87.0
+
+Next Update in 2 hours
 
 ===============================
 ```
