@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Font%20Style%20Demo/example_output.png)
 
-# UI Design for TFT's
+# GUI Design for TFT's
 I've figured out how to create drop shadow and outline font styles using bitmap fonts in circuit python using
 Adafruit's displayio tilegrid x,y coordinate system. This type of font styling is 100% impossible on Arduino with existing graphic libraries.
 This is just one of hundreds of reasons for everyone to port their existing Arduino sketches to circuit python.
