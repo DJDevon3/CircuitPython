@@ -9,8 +9,9 @@ This is just one of hundreds of reasons for everyone to port their existing Ardu
 At least when it comes to TFT displays, graphics and GUI design, circuit python is far superior to Arduino.
 
 # Bitmap Font Love/Hate Relationship
-Bitmap fonts don't scale up well without pixelation and you cannot scale down a font lower than 1. The starting size of a font is the smallest it can get so its extremely
-important to know exactly the font size you want before you start creating your own font. BDF fonts are not TTF fonts, images never scale without artifacts.
+Bitmap fonts don't scale up well without pixelation and you cannot scale down a font lower than 1. 
+The starting size of a font is the smallest it will ever possibly be. It's extremely
+important to know the exact font size you want before you start creating your own font. BDF fonts are not TTF fonts, images never scale without artifacts.
 In order to create clean looking fonts you must use a font designed for the pixel height you want to use. It's actually very easy to [create your own BDF fonts
 with fontforge](https://learn.adafruit.com/custom-fonts-for-pyportal-circuitpython-display/overview) for each label's size need. Keep in mind the more fonts you load, the slower your TFT display will be.
 
