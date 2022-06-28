@@ -1,5 +1,10 @@
+import time
 import board
+import digitalio
 import displayio
+import adafruit_sdcard
+from adafruit_bitmapsaver import save_pixels
+import storage
 from adafruit_display_text import label
 from adafruit_bitmap_font import bitmap_font
 from adafruit_hx8357 import HX8357
@@ -7,15 +12,21 @@ from adafruit_hx8357 import HX8357
 # This sketch should also work for the 2.5" TFT Featherwing, just change the size.
 DISPLAY_WIDTH = 480
 DISPLAY_HEIGHT = 320
+take_screenshot = False
 
 # Initialize TFT Display
-displayio.release_displays()
 i2c = board.I2C()
 spi = board.SPI()
+cs = digitalio.DigitalInOut(board.D5)
+sdcard = adafruit_sdcard.SDCard(spi, cs)
+vfs = storage.VfsFat(sdcard)
+displayio.release_displays()
 tft_cs = board.D9
 tft_dc = board.D10
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = HX8357(display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT)
+virtual_root = "/sd"
+storage.mount(vfs, virtual_root)
 
 # Some quick colors. 
 text_black = (0x000000)
@@ -42,7 +53,7 @@ hello_label.color = text_white
 
 test_label = label.Label(medium_font)
 test_label.anchor_point = (0.5, 1.0)
-test_label.anchored_position = (DISPLAY_WIDTH/2, 70)
+test_label.anchored_position = (DISPLAY_WIDTH/2, 90)
 test_label.scale = (3)
 test_label.color = text_orange
 
@@ -61,7 +72,7 @@ clean_label.color = text_orange
 # ============= Shadow & Outline Font Styles ===========
 test_shadow = label.Label(medium_font)
 test_shadow.anchor_point = (0.5, 1.0)
-test_shadow.anchored_position = (DISPLAY_WIDTH/2+2, 70+2)
+test_shadow.anchored_position = (DISPLAY_WIDTH/2+2, 90+2)
 test_shadow.scale = (3)
 test_shadow.color = text_black
 
@@ -91,25 +102,25 @@ test_outline4.color = text_black
 
 clean_outline1 = label.Label(huge_font)
 clean_outline1.anchor_point = (0.5, 1.0)
-clean_outline1.anchored_position = (DISPLAY_WIDTH/2-2, 300-2)
+clean_outline1.anchored_position = (DISPLAY_WIDTH/2-6, 300-6)
 clean_outline1.scale = (1)
 clean_outline1.color = text_black
 
 clean_outline2 = label.Label(huge_font)
 clean_outline2.anchor_point = (0.5, 1.0)
-clean_outline2.anchored_position = (DISPLAY_WIDTH/2-2, 300+2)
+clean_outline2.anchored_position = (DISPLAY_WIDTH/2-6, 300+6)
 clean_outline2.scale = (1)
 clean_outline2.color = text_black
 
 clean_outline3 = label.Label(huge_font)
 clean_outline3.anchor_point = (0.5, 1.0)
-clean_outline3.anchored_position = (DISPLAY_WIDTH/2+2, 300-2)
+clean_outline3.anchored_position = (DISPLAY_WIDTH/2+6, 300-6)
 clean_outline3.scale = (1)
 clean_outline3.color = text_black
 
 clean_outline4 = label.Label(huge_font)
 clean_outline4.anchor_point = (0.5, 1.0)
-clean_outline4.anchored_position = (DISPLAY_WIDTH/2+2, 300+2)
+clean_outline4.anchored_position = (DISPLAY_WIDTH/2+6, 300+6)
 clean_outline4.scale = (1)
 clean_outline4.color = text_black
 
@@ -170,3 +181,14 @@ while True:
     clean_outline3.text = clean_demo
     clean_outline4.text = clean_demo
     clean_label.text = clean_demo
+    
+    time.sleep(30.0)
+    # if take_screenshot variable is set to true
+    if take_screenshot:
+        print("Compiling Screenshot... ")
+        save_pixels("/sd/screenshot.bmp", display)
+        print("Screenshot Done\n")
+    else:
+        # take_screenshot = False
+        pass
+pass
