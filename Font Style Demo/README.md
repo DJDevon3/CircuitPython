@@ -2,6 +2,8 @@
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Font%20Style%20Demo/screenshot.bmp)
 
+![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Font%20Style%20Demo/screenshot2.bmp)
+
 # GUI Design for TFT's
 I've figured out how to create drop shadow and outline font styles from scratch using
 Adafruit's displayio tilegrid (x,y) coordinate system. This type of font styling is 100% impossible on Arduino with existing graphic libraries.
