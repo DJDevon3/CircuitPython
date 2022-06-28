@@ -1,3 +1,6 @@
+# Project Details
+Interact with the SD Card on the TFT Featherwing. Show SD Card & File System information.
+
 # Required Hardware:
 - Adafruit Feather (NRF52840 in this example) running Circuit Python 7.3.x
 - Adafruit TFT (2.5" or 3.5") Featherwing
