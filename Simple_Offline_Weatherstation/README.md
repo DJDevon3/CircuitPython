@@ -2,7 +2,9 @@
 
 # Project Description:
 
-A project that began on Arduino and used daily for 2 years. Then one day I decided to update the Arduino IDE and libraries and it broke the code so horribly that I decided to start over. Re-coded from scratch on Circuit Python 7.x. There is no online or BLE used in this project. All sensor data comes from the board. Default sleep timer is 60 seconds (configurable). Will stay alive on battery power for about 30 hours (tested with Adafruit 3x 18650 battery pack). Recommended as a permanent install with USB power and backup battery for a power outage.
+A project that began on Arduino and used daily for 2 years. Then one day I decided to update the Arduino IDE and libraries and it broke the code so horribly that I decided to start from scratch and try Circuit Python 7.x instead. [The difference in result between Arduino and Circuit Python is self evident.](https://github.com/DJDevon3/Arduino/tree/master/Adafruit%20NRF52840%20Feather%20Sense)
+
+There is no online or BLE used in this project. All sensor data comes from the board. Default sleep timer is 60 seconds (configurable). Will stay alive on battery power for about 30 hours (tested with Adafruit 3x 18650 battery pack). Recommended as a permanent install with USB power and backup battery for a power outage.
 
 # Hardware Required:
 - Adafruit NRF52840 Bluefruit Sense Board (running Circuit Python)
