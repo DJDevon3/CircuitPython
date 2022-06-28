@@ -1,6 +1,6 @@
 # Real Font Styles in Circuit Python
 
-![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Font%20Style%20Demo/example_output.png)
+![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Font%20Style%20Demo/screenshot.bmp)
 
 # GUI Design for TFT's
 I've figured out how to create drop shadow and outline font styles from scratch using
