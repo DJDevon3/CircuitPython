@@ -10,7 +10,7 @@ The Adafruit Ultimate GPS Featherwing includes a Real Time Clock with coincell b
 
 - Displays RTC localtime while connecting to GPS (will display incorrect time if RTC never previously set)
 - GPS connects and receives UTC timestamp data
-- GPS time updates RTC (only once on reboot)
+- GPS time updates RTC only once per reboot. (time drift will occur eventually, reboot to resync time)
 - RTC permanently set with new synchronized time (even if USB power or VBAT power removed)
 - Outputs RTC time with local GMT offset (customizable Timezone variable).
 
@@ -19,3 +19,5 @@ This particluar GPS module does not have timezone capability, it only reports ti
 Currently not DST aware code. You must set timezone offset yourself. 
 
 Will have DST aware timezone in the future which changes + or - 1 twice a year (work in progress)
+
+Thanks to Neradoc for coding the Timezone offset correction for Adafruit GPS.
