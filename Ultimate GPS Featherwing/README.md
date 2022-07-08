@@ -20,4 +20,4 @@ Currently not DST aware code. You must set timezone offset yourself.
 
 Will have DST aware timezone in the future which changes + or - 1 twice a year (work in progress)
 
-Thanks to Neradoc for coding the Timezone offset correction for Adafruit GPS.
+Thanks to [Neradoc](https://github.com/Neradoc) for coding the Timezone offset correction for Adafruit GPS.
