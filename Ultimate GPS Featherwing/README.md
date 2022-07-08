@@ -5,11 +5,13 @@ Quad Stack Demo (NRF52840 Sense, ESP32 Airlift Featherwing, 3.5" TFT Featherwing
 The Adafruit Ultimate GPS Featherwing includes a Real Time Clock with coincell battery backup
 
 - Displays RTC localtime while connecting to GPS (will display incorrect time if RTC never previously set)
-- GPS connects and pulls UTC timestamp
+- GPS connects and receives UTC timestamp data
 - GPS time updates RTC (only once on reboot)
-- RTC now permanently set with that time (even if USB power or VBAT power removed)
-- Outputs renewed/reinitialized RTC time with GMT offset (customizable Timezone variable).
+- RTC permanently set with new synchronized time (even if USB power or VBAT power removed)
+- Outputs RTC time with local GMT offset (customizable Timezone variable).
 
-Currently not DST aware code. You'll need to set timezone with DST offset.
+This particluar GPS module does not have timezone capability, it only reports time in UTC (0 GMT).
 
-Will have DST aware timezone in the future (work in progress)
+Currently not DST aware code. You must set timezone offset yourself. 
+
+Will have DST aware timezone in the future which changes + or - 1 twice a year (work in progress)
