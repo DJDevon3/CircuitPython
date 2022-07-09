@@ -4,6 +4,8 @@
 
 UTC Time = 5:39. The -4 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
 
+If the microcontroller board is battery powered the GPS ensures time is correct even in the event of a power outage.
+
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_gps.bmp)
 
 Quad Stack Demo (NRF52840 Sense, ESP32 Airlift Featherwing, 3.5" TFT Featherwing, Ultimate GPS Featherwing)
