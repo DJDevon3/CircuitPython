@@ -1,10 +1,10 @@
-# Adafruit Ultimate GPS Featherwing with Timezone Offset
+# Adafruit Ultimate GPS Featherwing with Real Time Clock & Timezone Offset
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_connecting.bmp)
 
 UTC Time = 5:39. The -4 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
 
-If the microcontroller board is battery powered the GPS ensures time during a power outage.
+If the microcontroller board is battery powered the GPS and RTC ensure proper time keeping during a power outage.
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_gps.bmp)
 
