@@ -1,10 +1,13 @@
 # Adafruit GPS with Real Time Clock & Timezone Offset
+While the microcontroller board is battery powered, using a GPS/RTC combination ensures proper time keeping even during a power outage.
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_connecting.bmp)
 
-UTC Time = 5:39. The -5 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
+UTC Time = 4:39 
 
-If the microcontroller board is battery powered the GPS and RTC ensure proper time keeping during a power outage.
+The -5 GMT Timezone offset incorrectly displays localtime as 11:39 during DST. 
+
+To correct this simply set Timezone offset to -4.
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_gps.bmp)
 
@@ -22,6 +25,7 @@ This particluar GPS module does not have timezone capability, it only reports ti
 
 Currently not DST aware code. You must set timezone offset yourself. 
 
-Will have DST aware timezone in the future which changes + or - 1 twice a year (work in progress)
+# Work in Progress
+- Automatic DST correction + or - 1 twice a year
 
 Thanks to [Neradoc](https://github.com/Neradoc) for coding the Timezone offset correction for Adafruit GPS.
