@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_connecting.bmp)
 
-UTC Time = 5:39. The -4 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
+UTC Time = 5:39. The -5 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
 
 If the microcontroller board is battery powered the GPS and RTC ensure proper time keeping during a power outage.
 
