@@ -4,7 +4,7 @@
 
 UTC Time = 5:39. The -4 GMT Timezone offset correctly displays localtime as 00:39. Changes date appropriately.
 
-If the microcontroller board is battery powered the GPS ensures time is correct even in the event of a power outage.
+If the microcontroller board is battery powered the GPS ensures time during a power outage.
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_gps.bmp)
 
