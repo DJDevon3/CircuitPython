@@ -1,4 +1,4 @@
-# Adafruit Ultimate GPS Featherwing with Real Time Clock & Timezone Offset
+# Adafruit GPS with Real Time Clock & Timezone Offset
 
 ![](https://raw.githubusercontent.com/DJDevon3/CircuitPython/main/Ultimate%20GPS%20Featherwing/screenshot_connecting.bmp)
 
