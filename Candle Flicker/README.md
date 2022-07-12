@@ -1,4 +1,4 @@
-# Circuit Python Candle Flicker Example for Gemma M0
+# Circuit Python Candle Flicker Example
 
 https://user-images.githubusercontent.com/49322231/178427246-88e6469e-75fa-4512-9f6b-78dbfa2c0e85.mov
 
