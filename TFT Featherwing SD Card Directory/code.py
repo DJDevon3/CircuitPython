@@ -1,5 +1,4 @@
 import board
-import microcontroller
 import digitalio
 import displayio
 import adafruit_sdcard
