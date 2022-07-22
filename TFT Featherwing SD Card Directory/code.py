@@ -8,9 +8,9 @@ import time
 from adafruit_hx8357 import HX8357
 
 spi = board.SPI()
-# Use board.SD_CS for Feather M0 Adalogger
-# cs = digitalio.DigitalInOut(board.SD_CS)
-# Or use a digitalio pin like 5 for breakout wiring:
+# Use adafruit_sdcard library if your board doesn't support sdcardio
+# import adafruit_sdcard
+# sdcard = adafruit_sdcard.SDCard(spi, cs)
 # cs = digitalio.DigitalInOut(board.D5)
 
 # Initialize SDCard to SPI bus
