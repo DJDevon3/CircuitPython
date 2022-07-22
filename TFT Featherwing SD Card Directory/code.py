@@ -1,7 +1,7 @@
 import board
 import digitalio
 import displayio
-import adafruit_sdcard
+import sdcardio
 import storage
 import os
 import time
@@ -11,10 +11,10 @@ spi = board.SPI()
 # Use board.SD_CS for Feather M0 Adalogger
 # cs = digitalio.DigitalInOut(board.SD_CS)
 # Or use a digitalio pin like 5 for breakout wiring:
-cs = digitalio.DigitalInOut(board.D5)
+# cs = digitalio.DigitalInOut(board.D5)
 
 # Initialize SDCard to SPI bus
-sdcard = adafruit_sdcard.SDCard(spi, cs)
+sdcard = sdcardio.SDCard(spi, board.D5)
 vfs = storage.VfsFat(sdcard)
 displayio.release_displays()
 
